@@ -1,0 +1,23 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.post-card {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.post-title {
+  margin-bottom: 10px;
+}
+
+.post-meta {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
