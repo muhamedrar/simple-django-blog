@@ -1,93 +1,62 @@
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
+/* Center the whole layout and improve spacing */
+.container-fluid {
+    max-width: 1200px;
+    padding: 0 15px;
 }
 
-.post-card {
-  background: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.post-title {
-  margin-bottom: 10px;
-}
-
-.post-meta {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 15px;
-}
-
-
-.profile-header {
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
-}
-
-.profile-card {
-    background: #ffffff;
-    padding: 20px 30px;
+.main-content {
+    background: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.profile-username {
-    margin: 0;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.profile-subtitle {
-    color: #777;
-    margin-top: 5px;
-}
-
+/* Make post cards look better */
 .posts-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .post-card {
     background: #fff;
-    padding: 18px 22px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    transition: 0.2s;
+    padding: 25px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    transition: all 0.2s ease;
 }
 
 .post-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.post-title {
-    margin: 0 0 8px 0;
-    font-size: 20px;
+/* Profile Header */
+.profile-header {
+    margin-bottom: 35px;
 }
 
-.post-meta {
-    font-size: 13px;
-    color: #777;
-    margin-bottom: 10px;
-}
-
-.post-meta .dot {
-    margin: 0 6px;
-}
-
-.post-body {
-    color: #333;
-    line-height: 1.5;
-}
-
-.empty-state {
+.profile-card {
+    background: #ffffff;
+    padding: 25px 35px;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     text-align: center;
-    color: #888;
-    padding: 30px;
+}
+
+/* Sidebar improvements */
+.sidebar-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    position: sticky;
+    top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .col-lg-3 {
+        margin-top: 30px;
+    }
 }
