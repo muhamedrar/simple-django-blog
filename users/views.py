@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from users.forms import registerationForm
 from django.contrib.auth.decorators import login_required
+from blog.models import Post
 
 def register(request):
     if request.method == 'POST':
@@ -18,4 +19,5 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request=request, template_name='users/profile.html',context={'user': request.user})
+    user_posts = Post.objects.filter(author_id = request.user.id)
+    return render(request=request, template_name='users/profile.html',context={"user_posts": user_posts})

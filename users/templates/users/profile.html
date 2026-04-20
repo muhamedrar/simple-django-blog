@@ -2,8 +2,38 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <h2>
-        {{ user.username }}
-    </h2>
-{% endblock content %}
 
+<div class="profile-header">
+    <div class="profile-card">
+        <h2 class="profile-username">{{ user.username }}</h2>
+        <p class="profile-subtitle">Your Posts Dashboard</p>
+    </div>
+</div>
+
+<div class="posts-container">
+
+    {% for post in user_posts %}
+        <div class="post-card">
+
+            <h3 class="post-title">{{ post.title }}</h3>
+
+            <div class="post-meta">
+                <span class="author">By {{ post.author.username }}</span>
+                <span class="dot">•</span>
+                <span class="date">{{ post.data_posted|date:"M d, Y" }}</span>
+            </div>
+
+            <p class="post-body">
+                {{ post.content|truncatewords:40 }}
+            </p>
+
+        </div>
+    {% empty %}
+        <div class="empty-state">
+            <p>No posts yet. Start writing your first post 🚀</p>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock content %}

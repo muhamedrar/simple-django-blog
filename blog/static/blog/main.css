@@ -21,3 +21,73 @@
   color: #666;
   margin-bottom: 15px;
 }
+
+
+.profile-header {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.profile-card {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.profile-username {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.profile-subtitle {
+    color: #777;
+    margin-top: 5px;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.post-card {
+    background: #fff;
+    padding: 18px 22px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: 0.2s;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+}
+
+.post-title {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+}
+
+.post-meta {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.post-meta .dot {
+    margin: 0 6px;
+}
+
+.post-body {
+    color: #333;
+    line-height: 1.5;
+}
+
+.empty-state {
+    text-align: center;
+    color: #888;
+    padding: 30px;
+}
