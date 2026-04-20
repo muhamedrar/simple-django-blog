@@ -44,16 +44,6 @@
     text-align: center;
 }
 
-/* Sidebar improvements */
-.sidebar-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-    position: sticky;
-    top: 20px;
-}
-
 /* Responsive */
 @media (max-width: 992px) {
     .col-lg-3 {
