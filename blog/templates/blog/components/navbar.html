@@ -26,14 +26,26 @@
 
       <!-- RIGHT SIDE -->
       <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+              <a class="nav-link" href="{% url "profile" %}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-link">Logout</button>
+            </form>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "login" %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "register" %}">Register</a>
+          </li>
+        {% endif %}
 
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
-        </li>
+        
 
       </ul>
 
