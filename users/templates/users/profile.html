@@ -1,46 +1,65 @@
 {% extends 'blog/base.html'%}
 {% load crispy_forms_tags %}
 
+{% block content_col_class %}col-12 col-xl-11{% endblock %}
+{% block main_content_class %}profile-page-shell{% endblock %}
+{% block sidebar %}{% endblock %}
+
 {% block content %}
-
-    <!-- Profile Section -->
-    <div class="profile-section">
-        <div class="profile-header">
-            <!-- User Profile Picture -->
-            <img src="{{ user.profile.image.url }}" alt="Profile Picture" width="120" height="120" class="profile-img">
-
-            <!-- User Info -->
-            <div class="user-info">
-                <h2>{{ user.username }}</h2>
-                <p>{{ user.email }}</p>
-            </div>
-        </div>
-    </div>
-
-<div class="posts-container">
-
-    {% for post in user_posts %}
-        <div class="post-card">
-
-            <h3 class="post-title">{{ post.title }}</h3>
-
-            <div class="post-meta">
-                <span class="author">By {{ post.author.username }}</span>
-                <span class="dot">•</span>
-                <span class="date">{{ post.data_posted|date:"M d, Y" }}</span>
+<div class="profile-layout">
+    <aside class="profile-sidebar">
+        <div class="profile-panel">
+            <div class="profile-header">
+                <img src="{{ user.profile.image.url }}" alt="{{ user.username }} profile picture" width="120" height="120" class="profile-img">
+                <div class="user-info">
+                    <h2>{{ user.username }}</h2>
+                    <p>{{ user.email }}</p>
+                </div>
             </div>
 
-            <p class="post-body">
-                {{ post.content|truncatewords:40 }}
-            </p>
-
+            <form class="profile-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Profile Info</legend>
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+                </fieldset>
+                <div class="form-group mb-0">
+                    <button class="btn btn-outline-info profile-submit-btn" type="submit">update</button>
+                </div>
+            </form>
         </div>
-    {% empty %}
-        <div class="empty-state">
-            <p>No posts yet. Start writing your first post 🚀</p>
-        </div>
-    {% endfor %}
+    </aside>
 
+    <section class="profile-posts-column">
+        <div class="profile-posts-heading">
+            <h3>{{ user.username }}'s Posts</h3>
+        </div>
+        <div class="posts-container profile-posts-container">
+            {% for post in user_posts %}
+                <article class="post-card feed-post">
+                    <div class="post-header">
+                        <img src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }} profile picture" class="post-avatar">
+                        <div class="post-author-block">
+                            <div class="post-author-row">
+                                <span class="author">{{ post.author.username }}</span>
+                                <span class="date">{{ post.data_posted|date:"M d, Y" }}</span>
+                            </div>
+                            <h3 class="post-title">{{ post.title }}</h3>
+                        </div>
+                    </div>
+
+                    <p class="post-body">
+                        {{ post.content|truncatewords:40 }}
+                    </p>
+                </article>
+            {% empty %}
+                <div class="post-card empty-state">
+                    <p>No posts yet. Start writing your first post.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
 </div>
 
 {% endblock content %}
