@@ -8,18 +8,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin ,UserPassesTestMixin
 posts = Post.objects.all()
 
 
-# def home(request):
-#     context = {
-#         'posts': posts
-#     }
-#     return render(request=request,template_name='blog/home.html',context=context)
-
-
 class PostViews(ListView):
     model = Post
     template_name = 'blog/home.html'
     context_object_name = 'posts'
     ordering = '-data_posted'
+
+    paginate_by = 5
 
 class PostDetailView(DetailView):
     model = Post
