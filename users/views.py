@@ -3,6 +3,10 @@ from django.contrib import messages
 from users.forms import registerationForm, userUpdateForm, userUpdateImage
 from django.contrib.auth.decorators import login_required
 from blog.models import Post
+from django.contrib.auth.mixins import LoginRequiredMixin ,UserPassesTestMixin
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
 
 def register(request):
     if request.method == 'POST':
@@ -44,3 +48,7 @@ def profile(request):
         'p_form': p_form
     }
     return render(request=request, template_name='users/profile.html',context=context)
+
+
+
+
