@@ -1,6 +1,7 @@
 {% extends 'blog/base.html'%}
 {% block content %}
 <div class="posts-container">
+  
   {% for post in posts %}
     <article class="post-card feed-post">
       <div class="post-header">
@@ -10,7 +11,11 @@
             <span class="author">{{ post.author.username }}</span>
             <span class="date">{{ post.data_posted }}</span>
           </div>
-          <h2 class="post-title">{{ post.title }}</h2>
+          <h2 class="post-title">
+              <a href="{% url 'post-detail' post.id%}" >
+                {{ post.title }}
+              </a>
+          </h2>
         </div>
       </div>
 
