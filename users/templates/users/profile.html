@@ -6,28 +6,24 @@
 {% block sidebar %}{% endblock %}
 
 {% block content %}
+
 <div class="profile-layout">
     <aside class="profile-sidebar">
         <div class="profile-panel">
-            <div class="profile-header">
-                <img src="{{ user.profile.image.url }}" alt="{{ user.username }} profile picture" width="120" height="120" class="profile-img">
-                <div class="user-info">
-                    <h2>{{ user.username }}</h2>
-                    <p>{{ user.email }}</p>
+            <div class="profile-banner"></div>
+                <div class="profile-body">
+                    <div class="profile-avatar-wrap">
+                        <img src="{{ user.profile.image.url }}"
+                            alt="{{ user.username }}"
+                            class="profile-img">
+                    </div>
+                        <p class="profile-name">{{ user.username }}</p>
+                        <p class="profile-email">{{ user.email }}</p>
+                        <hr class="profile-divider">
+                        <a class="btn btn-outline-warning profile-submit-btn" href="{% url 'profile-update' %}">
+                            Update Profile
+                        </a>
                 </div>
-            </div>
-
-            <form class="profile-form" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Profile Info</legend>
-                    {{ u_form|crispy }}
-                    {{ p_form|crispy }}
-                </fieldset>
-                <div class="form-group mb-0">
-                    <button class="btn btn-outline-info profile-submit-btn" type="submit">update</button>
-                </div>
-            </form>
         </div>
     </aside>
 
@@ -43,10 +39,13 @@
                         <div class="post-author-block">
                             <div class="post-author-row">
                                 <span class="author">{{ post.author.username }}</span>
-                                <span class="date">{{ post.data_posted|date:"M d, Y" }}</span>
+                                <span class="date">{{ post.data_posted}}</span>
+                                
                             </div>
                             <h3 class="post-title">{{ post.title }}</h3>
                         </div>
+                        <a class="btn btn-outline-secondary" href="{% url 'post-update' post.id%}">Updata</a>
+                        <a class="btn btn-outline-danger" href="{% url 'post-delete' post.id%}">Delete</a>
                     </div>
 
                     <p class="post-body">
@@ -59,6 +58,28 @@
                 </div>
             {% endfor %}
         </div>
+        {% if is_paginated %}
+    
+            {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info  " href="?page = 1" >First</a>
+            <a class="btn btn-outline-info  " href="?page = {{ page_obj.previous_page_number }}" >Previous</a>
+            {% endif %}
+            
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <a class="btn btn-info " href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a class="btn btn-outline-info " href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-info " href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="btn btn-outline-info " href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+      
+    
+  {% endif %}
     </section>
 </div>
 

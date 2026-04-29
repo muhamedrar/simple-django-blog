@@ -6,7 +6,7 @@ from blog.models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin ,UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-
+from django.core.paginator import Paginator
 
 def register(request):
     if request.method == 'POST':
@@ -22,9 +22,7 @@ def register(request):
     return render(request, template_name='users/register.html',context={"form":form})
 
 @login_required
-def profile(request):
-    user_posts = Post.objects.filter(author_id = request.user.id)
-
+def profile_update(request):
     if request.method == 'POST':
         u_form  = userUpdateForm(request.POST,instance=request.user)
         p_form = userUpdateImage(
@@ -43,12 +41,26 @@ def profile(request):
 
 
     context = {
-        'user_posts': user_posts,
+        
         'u_form': u_form,
         'p_form': p_form
     }
-    return render(request=request, template_name='users/profile.html',context=context)
+    return render(request=request, template_name='users/profile_update.html',context=context)
 
+
+@login_required
+def profile(request):
+    user_posts = Post.objects.filter(author=request.user).order_by('-data_posted')
+    paginator = Paginator(user_posts, 5)  # 5 posts per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'user_posts': page_obj,
+        'page_obj': page_obj,                       
+        'is_paginated': page_obj.has_other_pages(),
+    }
+    return render(request=request, template_name='users/profile.html',context=context)
 
 
 
