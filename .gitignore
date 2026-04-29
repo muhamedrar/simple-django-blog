@@ -8,7 +8,7 @@ __pycache__/
 
 .codex
 
-media/*
+media/profile_pics
 # Distribution / packaging
 .Python
 build/
