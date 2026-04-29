@@ -10,14 +10,18 @@ class Command(BaseCommand):
     help = "Seed database with fake posts"
 
     def handle(self, *args, **kwargs):
-        user_1 = User.objects.filter(username = 'mohamed').first()  
-        user_2 = User.objects.filter(username = 'mohamedtest').first()  
+        users = list(User.objects.all())
+
+        if not users:
+            self.stdout.write(self.style.ERROR("No users found!"))
+            return
 
         for i in range(20):
-            user = random.choice([user_1, user_2])
+            user = random.choice(users)
+
             Post.objects.create(
                 title=fake.sentence(nb_words=9),
-                content=fake.paragraph(nb_sentences=90),
+                content=fake.paragraph(nb_sentences=5),
                 author=user
             )
 
