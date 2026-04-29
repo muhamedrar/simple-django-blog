@@ -8,7 +8,12 @@
         <img src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }} profile picture" class="post-avatar">
         <div class="post-author-block">
           <div class="post-author-row">  
-            <span class="author"><a href="{% url 'user-posts' post.author.username %}">{{ post.author.username }}</a></span>
+            {% if post.author.username == user.username %}
+                <span class="author"><a href="{% url 'profile' %}">{{ post.author.username }}</a></span>
+            {% else %}
+                <span class="author"><a href="{% url 'user-posts' post.author.username %}">{{ post.author.username }}</a></span>
+            
+            {% endif %}
             <span class="date">{{ post.data_posted }}</span>
           </div>
           <h2 class="post-title">

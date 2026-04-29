@@ -8,13 +8,10 @@
         <img src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }} profile picture" class="post-avatar">
         <div class="post-author-block">
           <div class="post-author-row">
-            
+        
             <span class="author">{{ post.author.username }}</span>
             <span class="date">{{ post.data_posted }}</span>
-            {% if post.author.username == user.username %}
-                <a class="btn btn-outline-secondary" href="{% url 'post-update' post.id%}">Updata</a>
-                <a class="btn btn-outline-danger" href="{% url 'post-delete' post.id%}">Delete</a>
-            {% endif %}
+            
           </div>
           <h2 class="post-title">
               <a href="{% url 'post-detail' post.id%}" >
