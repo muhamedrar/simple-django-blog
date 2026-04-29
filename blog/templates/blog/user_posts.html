@@ -22,7 +22,7 @@
       </div>
 
       <p class="post-body">
-        {{ post.content }}
+        {{ post.content |truncatewords:40 }}
       </p>
     </article>
   {% empty %}
