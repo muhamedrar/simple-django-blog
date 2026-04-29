@@ -13,11 +13,11 @@ class Command(BaseCommand):
         user_1 = User.objects.filter(username = 'mohamed').first()  
         user_2 = User.objects.filter(username = 'mohamedtest').first()  
 
-        for i in range(15):
+        for i in range(20):
             user = random.choice([user_1, user_2])
             Post.objects.create(
-                title=fake.sentence(nb_words=6),
-                content=fake.paragraph(nb_sentences=3),
+                title=fake.sentence(nb_words=9),
+                content=fake.paragraph(nb_sentences=90),
                 author=user
             )
 

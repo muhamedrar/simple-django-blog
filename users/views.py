@@ -23,6 +23,7 @@ def register(request):
 
 @login_required
 def profile_update(request):
+    user_img = request.user.profile.image
     if request.method == 'POST':
         u_form  = userUpdateForm(request.POST,instance=request.user)
         p_form = userUpdateImage(
@@ -41,7 +42,7 @@ def profile_update(request):
 
 
     context = {
-        
+        'user_img': user_img,
         'u_form': u_form,
         'p_form': p_form
     }
@@ -51,7 +52,7 @@ def profile_update(request):
 @login_required
 def profile(request):
     user_posts = Post.objects.filter(author=request.user).order_by('-data_posted')
-    paginator = Paginator(user_posts, 5)  # 5 posts per page
+    paginator = Paginator(user_posts, 5)  
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

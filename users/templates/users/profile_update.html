@@ -1,20 +1,48 @@
 {% extends 'blog/base.html'%}
 {% load crispy_forms_tags %}
-
 {% block content %}
-    <div class="post-card">
-        <form class="profile-form" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Profile Info</legend>
-                    {{ u_form|crispy }}
-                    {{ p_form|crispy }}
-                </fieldset>
-                <div class="form-group mb-0">
-                    <button class="btn btn-outline-info profile-submit-btn" type="submit">update</button>
-                </div>
-            </form>
-        </div>
-    </div>
-{% endblock content %}
+<div class="update-card">
+    <div class="update-banner"></div>
+    <div class="update-body">
 
+        <div class="update-avatar-section">
+            <div class="update-avatar-wrap">
+                <img src="{{ user_img.url }}" alt="Profile picture" class="update-avatar-img" id="avatar-preview">
+                <label for="id_image" class="avatar-edit-btn" title="Change photo">✎</label>
+            </div>
+            <div class="update-avatar-info">
+                <p class="update-username">{{ request.user.username }}</p>
+                <p class="update-hint">Click the pencil to change your photo</p>
+            </div>
+        </div>
+
+        <form class="profile-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="update-legend">Account Info</legend>
+                {{ u_form|crispy }}
+            </fieldset>
+            <fieldset class="form-group" style="display: none;"">
+                <legend class="update-legend">Profile Photo</legend>
+                {{ p_form|crispy }}
+            </fieldset>
+            <div class="form-group mb-0">
+                <button class="btn btn-outline-info profile-submit-btn" type="submit">Save Changes</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    const input = document.getElementById('id_image');
+    if (input) {
+        input.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                document.getElementById('avatar-preview').src = URL.createObjectURL(file);
+            }
+        });
+    }
+</script>
+{% endblock content %}
