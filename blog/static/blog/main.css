@@ -402,3 +402,184 @@
     padding: 0;
     margin-bottom: 16px;
 }
+
+
+/* About Page */
+.about-hero {
+    padding: 60px 0 40px;
+    text-align: center;
+    border-bottom: 1px solid #f0f4f8;
+    margin-bottom: 48px;
+}
+
+.about-hero-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #0f3460;
+    background: #e8f0fb;
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+}
+
+.about-hero h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+}
+
+.about-hero h1 span {
+    background: linear-gradient(135deg, #0f3460, #16213e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-hero-sub {
+    font-size: 1rem;
+    color: #6b7280;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.about-section {
+    margin-bottom: 48px;
+}
+
+.about-section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #9ca3af;
+    margin-bottom: 20px;
+}
+
+.about-tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 48px;
+}
+
+.about-tech-card {
+    background: #f9fafb;
+    border: 1px solid #e8edf4;
+    border-radius: 14px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.about-tech-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.07);
+}
+
+.about-tech-icon {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.about-tech-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 4px;
+}
+
+.about-tech-desc {
+    font-size: 0.72rem;
+    color: #9ca3af;
+    margin: 0;
+}
+
+.about-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+}
+
+.about-feature-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e8edf4;
+    border-radius: 14px;
+    transition: box-shadow 0.15s;
+}
+
+.about-feature-row:hover {
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+.about-feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #e8f0fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.about-feature-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 4px;
+}
+
+.about-feature-text {
+    font-size: 0.82rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.about-cta {
+    text-align: center;
+    padding: 48px 32px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+
+.about-cta h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+}
+
+.about-cta p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.about-cta-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 576px) {
+    .about-hero h1 { font-size: 1.9rem; }
+    .about-tech-grid { grid-template-columns: repeat(2, 1fr); }
+}

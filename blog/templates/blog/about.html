@@ -1,7 +1,95 @@
 {% extends 'blog/base.html'%}
 {% block content %}
-    <h1>
-        this is about page
-    </h1>
-{% endblock content %}
 
+<div class="about-hero">
+    <span class="about-hero-label">About this blog</span>
+    <h1>A place to <span>write, share</span><br>and connect</h1>
+    <p class="about-hero-sub">
+        A full-stack blogging platform built with Django — where developers and writers can share their thoughts with the world.
+    </p>
+</div>
+
+<div class="about-section">
+    <p class="about-section-label">Built with</p>
+    <div class="about-tech-grid">
+        <div class="about-tech-card">
+            <span class="about-tech-icon">🐍</span>
+            <p class="about-tech-name">Django 5</p>
+            <p class="about-tech-desc">Backend framework</p>
+        </div>
+        <div class="about-tech-card">
+            <span class="about-tech-icon">🗄️</span>
+            <p class="about-tech-name">SQLite</p>
+            <p class="about-tech-desc">Database</p>
+        </div>
+        <div class="about-tech-card">
+            <span class="about-tech-icon">🎨</span>
+            <p class="about-tech-name">Bootstrap 4</p>
+            <p class="about-tech-desc">UI framework</p>
+        </div>
+        <div class="about-tech-card">
+            <span class="about-tech-icon">🖼️</span>
+            <p class="about-tech-name">Pillow</p>
+            <p class="about-tech-desc">Image handling</p>
+        </div>
+        <div class="about-tech-card">
+            <span class="about-tech-icon">📧</span>
+            <p class="about-tech-name">Gmail SMTP</p>
+            <p class="about-tech-desc">Email service</p>
+        </div>
+        <div class="about-tech-card">
+            <span class="about-tech-icon">🐳</span>
+            <p class="about-tech-name">Docker</p>
+            <p class="about-tech-desc">Containerized</p>
+        </div>
+    </div>
+</div>
+
+<div class="about-section">
+    <p class="about-section-label">What you can do</p>
+    <div class="about-features">
+        <div class="about-feature-row">
+            <div class="about-feature-icon">✍️</div>
+            <div>
+                <p class="about-feature-title">Write & publish posts</p>
+                <p class="about-feature-text">Create, edit, and delete your own blog posts with a clean editor. Your content, your control.</p>
+            </div>
+        </div>
+        <div class="about-feature-row">
+            <div class="about-feature-icon">👤</div>
+            <div>
+                <p class="about-feature-title">Customize your profile</p>
+                <p class="about-feature-text">Upload a profile picture, update your username and email, and build your author identity.</p>
+            </div>
+        </div>
+        <div class="about-feature-row">
+            <div class="about-feature-icon">🔍</div>
+            <div>
+                <p class="about-feature-title">Browse by author</p>
+                <p class="about-feature-text">Click any username to explore all posts by that author in one place.</p>
+            </div>
+        </div>
+        <div class="about-feature-row">
+            <div class="about-feature-icon">🔒</div>
+            <div>
+                <p class="about-feature-title">Secure authentication</p>
+                <p class="about-feature-text">Register, login, and reset your password securely via email — all handled by Django's auth system.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-cta">
+    <h2>Ready to start writing?</h2>
+    <p>Join and share your first post with the community today.</p>
+    <div class="about-cta-btns">
+        <a href="{% url 'register' %}" class="btn btn-warning" style="border-radius: 999px; font-weight: 700; padding: 10px 28px;">
+            Create account
+        </a>
+        <a href="{% url 'login' %}" class="btn btn-outline-light" style="border-radius: 999px; font-weight: 600; padding: 10px 28px;">
+            Sign in
+        </a>
+    </div>
+</div>
+
+{% endblock content %}
