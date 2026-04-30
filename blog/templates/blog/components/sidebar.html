@@ -1,11 +1,52 @@
-<div class="post-card">
-<h4>Our Sidebar</h4>
- <p class="post-meta">
-    <span>welcome to our blog site You can add diffrent things</span> 
- </p>
-  <ul class="list-group">
-    <li class="list-group-item">Latest Posts</li>
-    <li class="list-group-item">Announcements</li>
-    <li class="list-group-item">Calendar</li>
-  </ul>
+<div style="display: flex; flex-direction: column; gap: 16px; position: sticky; top: 20px;">
+
+    <div class="post-card" style="padding: 20px;">
+        <p style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #9ca3af; margin-bottom: 14px;">
+            About this blog
+        </p>
+        <p style="font-size: 0.85rem; color: #4b5563; line-height: 1.7; margin-bottom: 16px;">
+            A community-driven blog built with Django. Share your thoughts, discover new ideas, and connect with other writers.
+        </p>
+        <a href="{% url 'blog-about' %}" class="btn btn-outline-secondary btn-sm"
+           style="width: 100%; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">
+            Learn more
+        </a>
+    </div>
+
+    <div class="post-card" style="padding: 20px;">
+        <p style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #9ca3af; margin-bottom: 14px;">
+            Quick links
+        </p>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px;">
+            <li>
+                <a href="{% url 'blog-home' %}" class="sidebar-link">
+                    <span>🏠</span> Home
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'blog-about' %}" class="sidebar-link">
+                    <span>📖</span> About
+                </a>
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'post-create' %}" class="sidebar-link">
+                    <span>✍️</span> New Post
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'profile' %}" class="sidebar-link">
+                    <span>👤</span> My Profile
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'register' %}" class="sidebar-link">
+                    <span>🚀</span> Get Started
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
 </div>

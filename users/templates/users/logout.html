@@ -1,15 +1,30 @@
 {% extends 'blog/base.html'%}
-{% load crispy_forms_tags %}
-
 {% block content %}
-    <h2>You Have Been Logged Out</h2>
-    <div class="border-top pt-3">
-            {% csrf_token %}
-            <small class="text-muted">
-           <a class="m-lg-2" href="{% url 'login' %}">Log in again</a>
-        </small>
-        
+
+<div class="auth-card">
+    <div class="auth-banner">
+        <h1 class="auth-banner-title">See you soon</h1>
     </div>
 
-{% endblock content %}
+    <div class="auth-body" style="text-align: center; padding: 48px 32px;">
+        <div style="font-size: 2.5rem; margin-bottom: 16px;">👋</div>
+        <p style="font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: 8px;">
+            You've been logged out
+        </p>
+        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 28px;">
+            Thanks for visiting. Come back anytime.
+        </p>
+        <a href="{% url 'login' %}" class="btn btn-outline-info auth-submit-btn">
+            Log in again
+        </a>
+    </div>
 
+    <div class="auth-footer">
+        <small>
+            Don't have an account?
+            <a href="{% url 'register' %}">Sign Up</a>
+        </small>
+    </div>
+</div>
+
+{% endblock content %}

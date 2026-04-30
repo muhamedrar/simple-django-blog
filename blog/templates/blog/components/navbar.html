@@ -1,60 +1,57 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    
-    <!-- Project Title -->
-    <a class="navbar-brand" href="/">Django Blog</a>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: #0f1623; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 12px 20px;">
 
-    <!-- Mobile toggle -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
+    <a class="navbar-brand" href="/" style="font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; color: #fff;">
+        ✦ Django Blog
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            style="border-color: rgba(255,255,255,0.15);">
+        <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto" style="gap: 4px;">
+            <li class="nav-item">
+                <a class="nav-link nav-pill" href="{% url 'blog-home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-pill" href="{% url 'blog-about' %}">About</a>
+            </li>
+        </ul>
 
-      <!-- LEFT SIDE -->
-      <ul class="navbar-nav mr-auto">
-
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'blog-home' %}">Home</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'blog-about' %}">About</a>
-        </li>
-
-      </ul>
-
-      <!-- RIGHT SIDE -->
-      <ul class="navbar-nav ml-auto">
-        {% if user.is_authenticated %}
-          <li class="nav-item">
-              <a class="nav-link" href="{% url "profile" %}">Profile</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{% url "post-create" %}">Create Post</a>
-          </li>
-          <li class="nav-item">
-            <form method="POST" action="{% url 'logout' %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-link">Logout</button>
-            </form>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url "login" %}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url "register" %}">Register</a>
-          </li>
-        {% endif %}
-
-        
-
-      </ul>
-
+        <ul class="navbar-nav ml-auto align-items-center" style="gap: 8px;">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link nav-pill" href="{% url 'post-create' %}">
+                    + New Post
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'profile' %}" class="nav-avatar-btn">
+                    <img src="{{ user.profile.image.url }}" alt="{{ user.username }}"
+                         style="width:32px; height:32px; border-radius:50%; object-fit:cover; border: 2px solid rgba(255,255,255,0.2);">
+                    <span>{{ user.username }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-logout-btn">Logout</button>
+                </form>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link nav-pill" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'register' %}" class="btn btn-outline-warning btn-sm"
+                   style="border-radius: 999px; font-weight: 700; padding: 6px 18px; font-size: 0.82rem;">
+                    Sign Up
+                </a>
+            </li>
+            {% endif %}
+        </ul>
     </div>
-  </nav>
+</nav>
 </header>
-
-
-
