@@ -1,19 +1,31 @@
 {% extends 'blog/base.html'%}
 {% load crispy_forms_tags %}
-
 {% block content %}
-    <div class="post-card">
-        <form class=" m-2"  method="POST">
+
+<div class="auth-card" style="max-width: 680px;">
+    <div class="auth-banner" style="height: 75px;">
+        <h1 class="auth-banner-title">Write a new post</h1>
+    </div>
+
+    <div class="auth-body">
+        <p class="auth-label">Post details</p>
+        <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Blog Post</legend>
                 {{ form|crispy }}
             </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Post</button>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <a href="{% url 'blog-home' %}"
+                   style="font-size: 0.82rem; color: #6b7280; text-decoration: none;">
+                    ← Cancel
+                </a>
+                <button class="btn btn-outline-info" type="submit"
+                        style="border-radius: 10px; font-weight: 700; padding: 10px 32px;">
+                    Publish Post
+                </button>
             </div>
         </form>
-       
     </div>
-{% endblock content %}
+</div>
 
+{% endblock content %}
