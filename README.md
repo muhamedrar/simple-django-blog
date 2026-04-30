@@ -1,13 +1,10 @@
 # Simple Django Blog
 
-A full-featured blog application built with Django.
-Users can register, create posts, update profiles, and interact with content through a clean UI.
+A full-stack blog application built with Django — featuring user authentication, profile management, and complete post CRUD with a clean, custom UI.
 
-##  Live Demo
+🔗 **Live demo:** [muhamedrar.pythonanywhere.com](https://muhamedrar.pythonanywhere.com/)
 
-https://muhamedrar.pythonanywhere.com/
-
-##  Features
+---
 
 * User authentication (register, login, logout)
 * Password reset via email
@@ -16,12 +13,15 @@ https://muhamedrar.pythonanywhere.com/
 * Responsive templates
 * Django admin panel for management
 
-##  Tech Stack
+## Tech Stack
 
-* Python
-* Django
-* SQLite (development)
-* HTML, CSS
+| Layer     | Technology        |
+|-----------|-------------------|
+| Backend   | Python, Django    |
+| Database  | SQLite (dev)      |
+| Frontend  | HTML, CSS, Bootstrap |
+| Deployment | PythonAnywhere  |
+
 
 ## ⚙️ Setup
 
